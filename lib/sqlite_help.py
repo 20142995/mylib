@@ -59,15 +59,4 @@ class sqliteDB():
         self.cursor.close()
         self.conn.close()
 
-if __name__ == "__main__":
-    create_table = 'CREATE TABLE github (name TEXT NOT NULL,url TEXT NOT NULL,updated_at TEXT NOT NULL,description TEXT NOT NULL, zh_description TEXT NOT NULL);'
-    if not os.path.exists("test.db"):
-        db = sqliteDB("test.db",create_table)
-    else:
-        db = sqliteDB("test.db")
-
-    # 增 INSERT INTO github (name,url,updated_at,description,zh_description) VALUES (?,?,?,?,?)
-    # 删 DELETE from github where url=?
-    # 改 UPDATE github set name = ? where url2=?
-    # 查 select * from github where name=?
 
