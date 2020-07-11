@@ -92,9 +92,4 @@ class SSHManager():
             self.ssh.close()
 
     def __del__(self):
-        if self.transport:
-            self.transport.close()
-        if self.sftp:
-            self.sftp.close()
-        if self.ssh:
-            self.ssh.close()
+        self.close()
