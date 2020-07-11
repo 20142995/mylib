@@ -98,4 +98,40 @@ class sqliteDB():
         :return : 返回查询结果
         """
 ```
+## ssh_help.py
+```
+from lib.ssh_help import SSHManager
+
+代码:
+class SSHManager():
+
+    def __init__(self,ip,port,user,passwd):
+        """
+        初始化函数，创建ssh连接
+        :param ip: 传入ip，eg: 127.0.0.1
+        :param port: 传入端口 eg: 22
+        :param user: 传入用户名 eg: root
+        :param passwd: 传入密码 eg: 123456
+        """
+    def bash(self,cmd):
+        """
+        执行命令
+        :param cmd: 传入命令，eg: whoami
+        :return 成功返回执行结果，失败返回False
+        """
+    def put(self,s_file,d_file):
+        """
+        上传文件
+        :param s_file: 传入要上传的文件，eg: ./test.txt
+        :param d_file: 远程位置，eg: /tmp/test.txt
+        :return 成功返回True，失败返回False
+        """
+    def get(self,s_file,d_file):
+        """
+        下载文件
+        :param s_file: 远程文件位置，eg: /tmp/test.txt
+        :param d_file: 下载存储位置，eg: ./test.txt
+        :return 成功返回True，失败返回False
+        """
+```
 
