@@ -92,14 +92,14 @@ class sqliteDB():
         :param sql: 传入的SQL语句 eg:INSERT INTO tablename (name) VALUES (?) / DELETE from tablename where name=? / UPDATE tablename set name = ? where name=?
         :param data: 传入对应数据，many=False:[a,b,c,d] many=True:[[a,b,c,d],[a,b,c,d],[a,b,c,d]]
         :param many: 传入批量数据，many=False
-        :return: 返回操作数据库状态
+        :return: 返回操作数据库状态 eg: True or False
         """
     def get(self,sql,data=[]): 
         """
         数据库的查询函数
         :param sql: 传入的SQL语句,eg:select * from tablename where name=?
         :param data: 传入查询参数,eg: [name,]
-        :return : 返回查询结果
+        :return : 返回查询结果 eg: [(a,b,)]
         """
 ```
 ## ssh_help.py
