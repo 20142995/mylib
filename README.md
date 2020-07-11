@@ -2,13 +2,13 @@
 
 ## config_help.py
 ```
-from lib.config_help import ini2json
+from lib.config_help import config2json
 
 代码:
-def ini2json(cfgpath):
+def config2json(cfgpath):
     """
     读取配置文件为json
-    :param cfgpath: 配置文件路径，eg: config.ini
+    :param cfgpath: 配置文件路径，eg: config.ini/config.conf/config.cfg
     """
 ```
 
