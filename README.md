@@ -9,6 +9,7 @@ def config2json(cfgpath):
     """
     读取配置文件为json
     :param cfgpath: 配置文件路径，eg: config.ini/config.conf/config.cfg
+    :return 返回json eg: {"项名":{"选项":"值"}
     """
 ```
 
@@ -24,11 +25,13 @@ def excel2list(excle_name,**kwargs):
     :param index: 按索引取sheet eg：0
     :param name: 按sheet名称取sheet eg：Sheet1
     :param row_or_col: 按行或列读取sheet，默认按行，eg：True
+    :return 返回list eg: [[["a","b","c"],[第1个sheet第2行],[第1个sheet第2行]],[第2个sheet],[...],...]
     """
 def excel2json(excle_name):
     """
     读取表格为json
     :param excle_name: excel文件路径
+    :return 返回json eg: {"sheet1":[{"表头":第1行}，{"表头":第2行}],"sheet2":[{"表头":第1行}，{"表头":第2行}],...}
     """
 def write_xlsx(excle_name, **tables):
     ''''
@@ -67,6 +70,7 @@ def net2ip(net_str,_all=False,_error=False):
     :param net_str: 传入合法网段，eg: 192.168.1.0/24 or 192.168.1.1-33 or 192.168.1.5-192.168.1.8
     :param _all: 是否包含网络地址和广播地址 eg: False
     :param _error: 是否包含无法处理地址 eg: False
+    :return 返回list eg [ip1,ip2,...]
     """
 ```
 ## sqlite_help.py

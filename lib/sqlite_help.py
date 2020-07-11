@@ -27,7 +27,7 @@ class sqliteDB():
         :param sql: 传入的SQL语句 eg:INSERT INTO tablename (name) VALUES (?) / DELETE from tablename where name=? / UPDATE tablename set name = ? where name=?
         :param data: 传入对应数据，many=False:[a,b,c,d] many=True:[[a,b,c,d],[a,b,c,d],[a,b,c,d]]
         :param many: 传入批量数据，many=False
-        :return: 返回操作数据库状态
+        :return: 返回操作数据库状态 eg: True or False
         """
         try:
             if many:
@@ -35,6 +35,7 @@ class sqliteDB():
             else:
                 self.cursor.execute(sql,data)
             i = self.conn.total_changes
+            logger.debug(f'数据操作成功,sql:{sql},改变数：{i}')
         except Exception:
             logger.error(f'数据操作失败,sql:{sql}', exc_info=True)
             return False
@@ -50,13 +51,20 @@ class sqliteDB():
         数据库的查询函数
         :param sql: 传入的SQL语句,eg:select * from tablename where name=?
         :param data: 传入查询参数,eg: [name,]
-        :return : 返回查询结果
+        :return : 返回查询结果 eg: [(a,b,)]
         """
         results = self.cursor.execute(sql,data)
+        logger.debug(f'数据查询,sql:{sql},结果数：{len(results)}')
         return results.fetchall()
+    
+    def close(self):
+        if self.cursor:
+            self.cursor.close()
+        if self.conn:
+            self.conn.close()
 
     def __del__(self):
-        self.cursor.close()
-        self.conn.close()
+        self.close()
+
 
 

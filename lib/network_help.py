@@ -15,12 +15,13 @@ def net2ip(net_str,_all=False,_error=False):
     :param net_str: 传入合法网段，eg: 192.168.1.0/24 or 192.168.1.1-33 or 192.168.1.5-192.168.1.8
     :param _all: 是否包含网络地址和广播地址 eg: False
     :param _error: 是否包含无法处理地址 eg: False
+    :return 返回list eg [ip1,ip2,...]
     """
     _list = []
     if re.search(r"^\d+\.\d+\.\d+\.\d+-\d+$",net_str):
         net,a,b = re.findall(r"(\d+\.\d+\.\d+\.)(\d+)-(\d+)",net_str)[0]
         if any([int(n) > 255 for n in [a,b]]):
-            logger.error(f"error ip_net > 255:{net_str}")
+            logger.error(f"{net_str} 范围大于255")
             if _error:
                 _list.append(net_str)
             return _list
@@ -29,7 +30,7 @@ def net2ip(net_str,_all=False,_error=False):
     elif re.search(r"^\d+\.\d+\.\d+\.\d+-\d+\.\d+\.\d+\.\d+$",net_str):
         a,b,c,d,e,f,g,h = re.findall(r"(\d+)\.(\d+)\.(\d+)\.(\d+)-(\d+)\.(\d+)\.(\d+)\.(\d+)",net_str)[0]
         if any([int(n) > 255 for n in [a,b,c,d,e,f,g,h]]):
-            logger.error(f"error:{net_str} > 255")
+            logger.error(f"{net_str} 范围大于255")
             if _error:
                 _list.append(net_str)
             return _list
@@ -46,7 +47,7 @@ def net2ip(net_str,_all=False,_error=False):
                 _list.append(ipaddress.ip_network(net_str).network_address.compressed)
                 _list.append(ipaddress.ip_network(net_str).broadcast_address.compressed)
         except Exception:
-            logger.error(f"error ip_net :{net_str}", exc_info=True)
+            logger.error(f"{net_str} 不合法网段", exc_info=True)
             if _error:
                 _list.append(net_str)
     return list(set(_list))

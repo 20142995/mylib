@@ -16,6 +16,7 @@ def excel2list(excle_name,**kwargs):
     :param index: 按索引取sheet eg：0
     :param name: 按sheet名称取sheet eg：Sheet1
     :param row_or_col: 按行或列读取sheet，默认按行，eg：True
+    :return 返回list eg: [[["a","b","c"],[第1个sheet第2行],[第1个sheet第2行]],[第2个sheet],[...],...]
     """
     _list = []
     sheets = []
@@ -52,6 +53,7 @@ def excel2json(excle_name):
     """
     读取表格为json
     :param excle_name: excel文件路径
+    :return 返回json eg: {"sheet1":[{"表头":第1行}，{"表头":第2行}],"sheet2":[{"表头":第1行}，{"表头":第2行}],...}
     """
     _dict = {}
     try:

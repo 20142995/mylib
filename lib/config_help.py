@@ -7,6 +7,7 @@ def config2json(cfgpath):
     """
     读取配置文件为json
     :param cfgpath: 配置文件路径，eg: config.ini/config.conf/config.cfg
+    :return 返回json eg: {"项名":{"选项":"值"}
     """
     _dict = {}
     conf = configparser.ConfigParser()
